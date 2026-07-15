@@ -26,23 +26,15 @@ The design is a single FSM-driven module (pattern_checker) with the following be
 
 ## Verification
 The design was verified using 2 directed test cases, each loading a different needle and haystack, verifying match detection across different pattern lengths:
-
-+------+-----------+----------------+------------------------------------------------------+
-
-| TEST |  NEEDLE   | NEEDLE LENGTH  |                      HAYSTACK                         |
-
-+------+-----------+----------------+------------------------------------------------------+
-
-|  1   |   "ANA"   |  3 characters  | "BANANA"                                              |
-
-+------+-----------+----------------+------------------------------------------------------+
-
-|  2   |  "memory" |  6 characters  | "the memory stores data while memory controllers      |
-
-|      |           |                |  access memory devices"                               |
-
-+------+-----------+----------------+------------------------------------------------------+
-
+```
++------+----------+---------+----------------------------+
+| TEST | NEEDLE   | LENGTH  | HAYSTACK (see testbench.sv)|
++------+----------+---------+----------------------------+
+|  1   | "ANA"    | 3 chars | "BANANA"                   |
++------+----------+---------+----------------------------+
+|  2   | "memory" | 6 chars | "the memory stores..."     |
++------+----------+---------+----------------------------+
+```
 For each test, the testbench streams the haystack into the design one byte per clock cycle — using a configurable haystack_bit_length variable to correctly handle haystacks of different sizes — and logs every detected match (count and pos) to a queue, which is printed as a formatted table at the end of each run. Sample output and waveform captures (shown in both binary and ASCII format for readability) are included in docs/ and waveforms/.
 
 ## Design Notes / Known Limitations
