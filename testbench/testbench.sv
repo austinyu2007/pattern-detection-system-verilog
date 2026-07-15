@@ -51,7 +51,7 @@ module testbench();
     haystack = "BANANA";
     char_tracker = 0;
     
-    #1000;
+    #150;
     $display("THIS FINDS (ANA) IN (BANANA)");
     foreach (information_log[i]) begin
       $display("%s", information_log[i]);
@@ -67,7 +67,7 @@ module testbench();
     haystack = "the memory stores data while memory controllers access memory devices";
     char_tracker = 0;
     
-    #1000;
+    #800;
     $display("");
     $display("THIS FINDS (memory) in (the memory stores data while memory controllers access memory devices)");
     foreach (information_log[i]) begin
@@ -100,5 +100,7 @@ module testbench();
     $dumpfile("dump.vcd");
     $dumpvars(0, testbench);
   end
+  
+endmodule
   
 endmodule
