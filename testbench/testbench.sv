@@ -67,6 +67,7 @@ module testbench();
     char_tracker = 0;
     
     #2000;
+    $display("");
     $display("THIS FINDS (memory) in (the memory stores data while memory controllers access memory devices)");
     foreach (information_log[i]) begin
       $display("%s", information_log[i]);
