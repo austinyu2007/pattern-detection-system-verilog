@@ -4,8 +4,8 @@ A clocked pattern-matching engine implemented in SystemVerilog, allowing for nee
 ## Overview
 This project implements a system that allows for a needle input (the text desired to be found) to be compared to a continuous stream of haystack data (one byte at a time)
 
-- A 64-bit programmable needle input (p to 8 characters, but you don't need to use them all)
-- The haystack is brought in one byte at aime to reduce memory usage
+- A 64-bit programmable needle input (up to 8 characters, but you don't need to use them all)
+- The haystack is brought in one byte at a time to reduce memory usage
 - Match counting (count) and first-match position tracking (pos) for every full match found
 - A jackpot flag raised on each complete match
 
@@ -45,4 +45,3 @@ The design does not count overlapping matches (for example searching for "ANA" i
 ## Future Work
 - Increase max character size of needle
 - Automatically adjust haystack_bit_size instead of manually doing it every time for a new test
-- You must manually set a new seed every time if you want a new byte
