@@ -2,8 +2,6 @@
 
 module testbench();
   
-  parameter HAYSTACK_BIT_LENGTH = 559;
-  
   logic clk;
   logic reset;
   logic [63:0] needle;
@@ -11,7 +9,8 @@ module testbench();
   logic [7:0] hb;
   logic [7:0] pos;
   logic [7:0] count;
-  logic [HAYSTACK_BIT_LENGTH:0] haystack;
+  logic [15:0] haystack_bit_length;
+  logic [1023:0] haystack;
   logic jackpot;
   logic halt = 1'b0;
   string information_log[$];
@@ -46,12 +45,13 @@ module testbench();
     
     #20;
     reset = 1'b0;
+    haystack_bit_length = 47;
     needle = "ANA";
     nl = 4'b0011;
     haystack = "BANANA";
     char_tracker = 0;
     
-    #2000;
+    #1000;
     $display("THIS FINDS (ANA) IN (BANANA)");
     foreach (information_log[i]) begin
       $display("%s", information_log[i]);
@@ -61,12 +61,13 @@ module testbench();
     
     #20;
     reset = 1'b0;
+    haystack_bit_length = 559;
     needle = "memory";
     nl = 4'b0110;
     haystack = "the memory stores data while memory controllers access memory devices";
     char_tracker = 0;
     
-    #2000;
+    #1000;
     $display("");
     $display("THIS FINDS (memory) in (the memory stores data while memory controllers access memory devices)");
     foreach (information_log[i]) begin
@@ -80,10 +81,10 @@ module testbench();
   
   //This is for the first needle searching
   always_ff @(posedge clk) begin
-    hb <= haystack[HAYSTACK_BIT_LENGTH - 8*char_tracker-:8];
+    hb <= haystack[haystack_bit_length - 8*char_tracker-:8];
     char_tracker <= char_tracker + 1;
     
-    if (char_tracker > HAYSTACK_BIT_LENGTH/8) begin
+    if (char_tracker > haystack_bit_length/8) begin
       halt <= 1'b1;
     end else begin
       halt <= 1'b0;
