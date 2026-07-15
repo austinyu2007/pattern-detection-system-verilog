@@ -1,8 +1,9 @@
+VCD info: dumpfile dump.vcd opened for output.
 THIS FINDS (ANA) IN (BANANA)
-COUNT NUMBER    1  FOUND AT POSITION      66
+COUNT NUMBER    1  FOUND AT POSITION       2
 
 THIS FINDS (memory) in (the memory stores data while memory controllers access memory devices)
 COUNT NUMBER    1  FOUND AT POSITION       5
 COUNT NUMBER    2  FOUND AT POSITION      30
 COUNT NUMBER    3  FOUND AT POSITION      56
-testbench.sv:77: $finish called at 4050000 (1ps)
+testbench.sv:78: $finish called at 1000000 (1ps)
